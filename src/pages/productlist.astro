@@ -2,12 +2,19 @@
 //@ts-nocheck
 import Layout from '../layouts/Layout.astro';
 import Pcard from '../components/Pcard.astro';
-const endpoint = "https://kea-alt-del.dk/t7/api/products?limit=50";
-const data = await fetch(endpoint).then(response=>response.json())
+const endpoint = "https://mulxnlchwlxnteskkfqi.supabase.co/rest/v1/produkter?select=*";
+const options = {
+    headers: {
+        apikey: "sb_publishable_EtDt8ZFb2H5AmJoh2n0X6g_kQAaAFUC"
+    }
+}
+const data = await fetch(endpoint, options).then(response=>response.json())
 
 const products = data.products;
 
 //console.log(data);
+
+console.log(data);
 
 ---
 
