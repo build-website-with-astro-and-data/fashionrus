@@ -5,8 +5,9 @@ const {product} = Astro.props;
 ---
 
 <article>
-    <img src=`https://kea-alt-del.dk/t7/images/webp/640/${product.id}.webp` alt="productimage">
-<h3>{product.productdisplayname}</h3><p>kr.{product.price},-</p>
+    <img src={product.image} alt="productimage">
+<h3>{product.productname}</h3>
+<p>kr.{product.price},-</p>
 <article/>
 
 <style>
