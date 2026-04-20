@@ -1,0 +1,28 @@
+---
+//@ts-nocheck
+import Layout from '../layouts/Layout.astro';
+import Pcard from '../components/Pcard.astro';
+const endpoint = "https://kea-alt-del.dk/t7/api/products?limit=50";
+const data = await fetch(endpoint).then(response=>response.json())
+
+const products = data.products;
+
+//console.log(data);
+
+---
+
+<Layout>
+<h2>Products</h2>
+<section>
+    {data.map((product) => (<Pcard {product}/>))}
+</section>
+</Layout>
+
+<style>
+section {
+    max-width: 100%;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+</style>
