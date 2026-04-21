@@ -1,0 +1,29 @@
+---
+//@ts-nocheck
+import Layout from '../../layouts/Layout.astro';
+export async function getStaticPaths() {
+    const endpoint = "https://mulxnlchwlxnteskkfqi.supabase.co/rest/v1/produkter?select=*";
+    const options = {
+    headers: {
+        apikey: "sb_publishable_EtDt8ZFb2H5AmJoh2n0X6g_kQAaAFUC"
+    }
+};
+  const response = await fetch(endpoint, options);
+  const data = await response.json();
+
+  return data.map((product) => {
+    return {
+      params: { id: product.Handle },
+      props: { product },
+    };
+  });
+}
+
+const { id } = Astro.params;
+const { product } = Astro.props;
+---
+
+<Layout>
+<h1> {product.productname}</h1>
+<img src={product.image} alt="productimage">
+</Layout>
