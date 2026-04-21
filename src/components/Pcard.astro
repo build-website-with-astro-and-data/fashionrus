@@ -4,11 +4,13 @@
 const {product} = Astro.props;
 ---
 
+<a href =`/details/${product.Handle}`>
 <article>
     <img src={product.image} alt="productimage">
 <h3>{product.productname}</h3>
 <p>kr.{product.price},-</p>
 <article/>
+</a>
 
 <style>
     article {
